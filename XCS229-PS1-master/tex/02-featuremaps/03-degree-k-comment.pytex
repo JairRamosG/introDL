@@ -1,0 +1,8 @@
+\item \points{2c}
+
+Regarding question 2.b, briefly comment on your observations of the fit for each K value.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2c(.*?)% <SCPD_SUBMISSION_TAG>_2c', f.read(), re.DOTALL)).group(1))
+🐍

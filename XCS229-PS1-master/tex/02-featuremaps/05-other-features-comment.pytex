@@ -1,0 +1,8 @@
+\item \points{2e}
+
+Compare the fitted models for 2.d with those from 2.b, and briefly comment about noticeable differences in the fit with this feature map.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2e(.*?)% <SCPD_SUBMISSION_TAG>_2e', f.read(), re.DOTALL)).group(1))
+🐍

@@ -1,0 +1,8 @@
+\item \points{2g}
+
+Regarding question 2.f, observe and comment on how the fitting of the training dataset changes as $k$ increases.
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_2g(.*?)% <SCPD_SUBMISSION_TAG>_2g', f.read(), re.DOTALL)).group(1))
+🐍
