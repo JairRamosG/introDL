@@ -37,6 +37,14 @@ class LinearModel(object):
     """
     pass
     # *** START CODE HERE ***
+    # Calcula A X^T X
+    A = np.dot(x.T, x)
+
+    # Calcula b = X^T y
+    b = np.dot(x.T, y)
+
+    # Resuelve el sistema
+    self.theta = np.linalg.solve(A, b)
     # *** END CODE HERE ***
 
   def predict(self, x):
@@ -51,6 +59,8 @@ class LinearModel(object):
     """
     pass
     # *** START CODE HERE ***
+    y_pred = np.dot(x,  self.theta)
+    return y_pred
     # *** END CODE HERE ***
 
   @staticmethod
@@ -65,6 +75,12 @@ class LinearModel(object):
     """
     pass
     # *** START CODE HERE ***
+    # Potencias de x, desde 0 hasta k
+    polys = [np.power(x, i) for i in range(k + 1)]
+    
+    # Concatena 
+    X_poly = np.hstack(polys)
+    return X_poly
     # *** END CODE HERE ***
 
   @staticmethod
@@ -80,6 +96,19 @@ class LinearModel(object):
     """
     pass
     # *** START CODE HERE ***
+    # Ahora hay que poner una columna para sin(x)
+    senos = np.sin(x)
+
+    # Potencias de x, desde 0 hasta k
+    polys = [np.power(x, i) for i in range(k + 1)]
+    
+    # Concatena 
+    X_poly = np.hstack(polys)
+    
+    # Falta ponerle los senos a lo que ya existe
+    X_sin = np.hstack([senos, X_poly])
+
+    return X_sin
     # *** END CODE HERE ***
 
 def run_exp(train_path, sine=False, ks=[1, 2, 3, 5, 10, 20], filename='plot.png'):
@@ -94,6 +123,18 @@ def run_exp(train_path, sine=False, ks=[1, 2, 3, 5, 10, 20], filename='plot.png'
       Our objective is to train models and perform predictions on plot_x data
       '''
       # *** START CODE HERE ***
+      # 1. Crear las características polinómicas del conjunto de entrenamiento
+      train_poly = LinearModel.create_poly(k, train_x)
+
+      # 2. Crear las características polinómicas del conjunto de puntos a graficar
+      plot_poly = LinearModel.create_poly(k, plot_x)
+
+      # 3. Entrenar el modelo lineal
+      model = LinearModel()
+      model.fit(train_poly, train_y)
+
+      # 4. Hacer las predicciones para graficar
+      plot_y = model.predict(plot_poly)
       # *** END CODE HERE ***
       '''
       Here plot_y are the predictions of the linear model on the plot_x data
