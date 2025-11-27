@@ -1,0 +1,11 @@
+\item \points{3c}
+
+One of the provided kernels performs
+extremely poorly in classifying the points. Which kernel performs badly and why
+does it fail?
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_3c(.*?)% <SCPD_SUBMISSION_TAG>_3c', f.read(), re.DOTALL)).group(1))
+🐍
+
