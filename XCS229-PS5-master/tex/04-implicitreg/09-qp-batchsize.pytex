@@ -1,0 +1,8 @@
+\item \points{4i} \textbf{GD vs SGD}
+
+\textbf{Compare} the results with those in sub-question (f) with the same initialization. Does SGD find a better solution?
+
+🐍
+import re
+with open('submission.tex') as f: print((re.search(r'% <SCPD_SUBMISSION_TAG>_4i(.*?)% <SCPD_SUBMISSION_TAG>_4i', f.read(), re.DOTALL)).group(1))
+🐍
